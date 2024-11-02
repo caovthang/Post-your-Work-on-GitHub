@@ -136,11 +136,11 @@ def user_stats(df,city):
 
 def raw_data (df):
     """Displays the data due filteration.
-    5 rows will added in each press"""
+    10 rows will added in each press"""
     print('press enter to see row data, press no to skip')   
     x = 0
     while (input()!= 'no'):       
-        x = x+5
+        x = x+10
         print(df.head(x))
 
 def main():
