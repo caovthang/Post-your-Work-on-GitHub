@@ -8,10 +8,9 @@ CITY_DATA = { 'chicago': 'chicago.csv',
 cities = ['chicago', 'new york city', 'washington']
 months = ['january', 'february', 'march', 'april', 'may', 'june', 'all']
 days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'all']
-def get_filters():
-    
+def get_filters():    
     print('Hello! Let\'s explore some US bikeshare data!')
-    # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+    # get user input for city (chicago, new york city, washington).
     # adding to documentation branch
     while True:
         city =input('ENTER THE CITY(Chicago, New York City,or Washington): ').lower()
@@ -33,9 +32,7 @@ def get_filters():
         if day in days:
             break
         else:
-          print('Please enter valid day.')  
-    
-      
+          print('Please enter valid day.')
 
     print('-'*40)
     return city, month, day
@@ -55,7 +52,6 @@ def load_data(city, month, day):
     if day != 'all':
         df = df[df['day_of_week'] == day.title()]
     return df
-
 
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
@@ -96,7 +92,6 @@ def station_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
 
@@ -111,10 +106,8 @@ def trip_duration_stats(df):
     mean_duration = df['Trip Duration'].mean() / 3600.0
     print("mean travel time in hours is: ", mean_duration)
 
-
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
 
 def user_stats(df,city):
     """Displays statistics on bikeshare users."""
@@ -130,8 +123,6 @@ def user_stats(df,city):
         print("Gender count: ",df['Gender'].value_counts())
     except:
         print('Counts of Each User Gender:\nSorry, no gender data available for {}'.format(city.title()))
-        
-    
 
     # Display earliest, most recent, and most common year of birth
     try:
@@ -146,18 +137,17 @@ def user_stats(df,city):
 
 def raw_data (df):
     """Displays the data due filteration.
-    5 rows will added in each press"""
+    10 rows will added in each press"""
     print('press enter to see row data, press no to skip')   
     x = 0
     while (input()!= 'no'):       
-        x = x+5
+        x = x+10
         print(df.head(x))
 
 def main():
     while True:
         city, month, day = get_filters()
-        df = load_data(city, month, day)
-        #print(df)
+        df = load_data(city, month, day)       
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
